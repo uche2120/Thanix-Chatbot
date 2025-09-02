@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanix BGram Sister | Zimbabwe's Lost Document Recovery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <div class="logo">
+                    <!-- <i class="fas fa-id-card"></i> -->
+                    <img src="WhatsApp Image 2025-08-31 at 17.29.01_9cb0cb0a.jpg" alt="Thanix BGram Logo" style="width:50px; height:48px; border-radius:50%; object-fit:cover; box-shadow:0 2px 8px rgba(18,140,126,0.15);  background:#fff; display:block;">
+                    <!-- <i class="fas fa-id-card" style="font-size:32px; color:#128c7e; margin-left:-18px; background:#fff; border-radius:50%; padding:6px; box-shadow:0 2px 8px rgba(18,140,126,0.10); position:relative; left:-18px; top:18px;"></i> -->
+                </div>
+                <div class="header-text">
+                    <h1>Thanix BGram Sister</h1>
+                    <p>Zimbabwe's Lost Document Recovery Platform</p>
+                </div>
+            </div>
+        </header>
+        
+        <div class="chatbot-container">
+            <!-- <div class="chat-header">
+                <i class="fab fa-whatsapp"></i>
+                <span>Thanix WhatsApp Chatbot</span>
+            </div> -->
+            
+            <div class="chat-messages">
+                <div class="message bot-message">
+                    <p>Hi! I'm Thanix BGram Sister! 👋</p>
+                    <p>How may I help you today?</p>
+                    <div class="timestamp" id="initial-timestamp">10:05 AM</div>
+                </div>
+            </div>
+            
+            <div class="chat-input">
+                <input type="text" placeholder="Type a message..." id="user-input">
+                <button id="send-button"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        
+        <footer>
+            <div class="footer-content">
+                <div>
+                    <p>&copy; 2025 Thanix BGram Sister. All rights reserved.</p>
+                    <p>Website: <a href="https://www.bgram.co.zw" style="color: #25d366;">www.bgram.co.zw</a></p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatMessages = document.querySelector('.chat-messages');
+            const userInput = document.getElementById('user-input');
+            const sendButton = document.getElementById('send-button');
+            const initialTimestamp = document.getElementById('initial-timestamp');
+            
+            // Set initial timestamp to current time
+            initialTimestamp.textContent = getCurrentTime();
+            
+            // Function to add a user message
+            function addUserMessage(message) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message user-message';
+                messageDiv.innerHTML = `
+                    <p>${message}</p>
+                    <div class="timestamp">${getCurrentTime()}</div>
+                `;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            // Function to add a bot message
+            function addBotMessage(message, isHTML = false) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message bot-message';
+                
+                if (isHTML) {
+                    messageDiv.innerHTML = message;
+                } else {
+                    messageDiv.innerHTML = `<p>${message}</p>`;
+                }
+                
+                const timestamp = document.createElement('div');
+                timestamp.className = 'timestamp';
+                timestamp.textContent = getCurrentTime();
+                messageDiv.appendChild(timestamp);
+                
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            // Function to add options
+            function addOptions() {
+                const optionsDiv = document.createElement('div');
+                optionsDiv.className = 'options';
+                optionsDiv.innerHTML = `
+                    <div class="option-btn" data-option="search">🔍 Search for my lost document</div>
+                    <div class="option-btn" data-option="upload">📤 Upload a found document</div>
+                    <div class="option-btn" data-option="learn">ℹ️ Learn how BGram works</div>
+                    <div class="option-btn" data-option="support">💬 Talk to Support</div>
+                `;
+                chatMessages.appendChild(optionsDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Add event listeners to options
+                document.querySelectorAll('.option-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const option = this.getAttribute('data-option');
+                        handleOptionClick(option, this.textContent);
+                    });
+                });
+            }
+            
+            // Handle option clicks
+            function handleOptionClick(option, text) {
+                addUserMessage(text);
+                
+                // Remove options
+                document.querySelector('.options').remove();
+                
+                // Simulate bot response based on option selected
+                setTimeout(() => {
+                    if (option === 'search') {
+                        addBotMessage('Please enter your full name or ID number to search.');
+                    } else if (option === 'upload') {
+                        addBotMessage('Please upload a clear photo of the document.');
+                        setTimeout(() => {
+                            addBotMessage('Now, please provide the name on the document:');
+                        }, 1500);
+                    } else if (option === 'learn') {
+                        addBotMessage('BGram helps reunite lost documents with their owners. When someone finds a document, they upload it to our secure database. Owners can search for their documents and we connect both parties after a small verification payment. No personal information is publicly shared.');
+                        setTimeout(() => {
+                            addOptions();
+                        }, 2000);
+                    } else if (option === 'support') {
+                        addBotMessage('If you want to talk to a real person, please kindly message our company owner at this WhatsApp number:');
+                        const supportDiv = document.createElement('div');
+                        supportDiv.className = 'support-number';
+                        supportDiv.innerHTML = '<i class="fab fa-whatsapp"></i> +263 78 597 6603';
+                        chatMessages.appendChild(supportDiv);
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                        
+                        setTimeout(() => {
+                            addOptions();
+                        }, 3000);
+                    }
+                }, 1000);
+            }
+            
+            // Get current time in HH:MM format
+            function getCurrentTime() {
+                const now = new Date();
+                return now.getHours() + ':' + (now.getMinutes() < 10 ? '0' : '') + now.getMinutes();
+            }
+            
+            // Handle send button click
+            sendButton.addEventListener('click', sendMessage);
+            
+            // Handle enter key in input field
+            userInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            // Show options when user sends a message
+            function sendMessage() {
+                const message = userInput.value.trim();
+                if (message) {
+                    addUserMessage(message);
+                    userInput.value = '';
+
+                    // Simple keyword-based smart replies
+                    const msg = message.toLowerCase();
+                    let replied = false;
+
+                    if (msg.includes('lost') && msg.includes('document')) {
+                        setTimeout(() => {
+                            addBotMessage('To search for your lost document, please click "🔍 Search for my lost document" below or type your full name or ID number.');
+                            if (!document.querySelector('.options')) addOptions();
+                        }, 1000);
+                        replied = true;
+                    } else if (msg.includes('upload') || msg.includes('found')) {
+                        setTimeout(() => {
+                            addBotMessage('To upload a found document, please click "📤 Upload a found document" below and follow the instructions.');
+                            if (!document.querySelector('.options')) addOptions();
+                        }, 1000);
+                        replied = true;
+                    } else if (msg.includes('how') && (msg.includes('work') || msg.includes('bgram'))) {
+                        setTimeout(() => {
+                            addBotMessage('BGram helps reunite lost documents with their owners. When someone finds a document, they upload it to our secure database. Owners can search for their documents and we connect both parties after a small verification payment. No personal information is publicly shared.');
+                            if (!document.querySelector('.options')) addOptions();
+                        }, 1200);
+                        replied = true;
+                    } else if (msg.includes('support') || msg.includes('help') || msg.includes('contact')) {
+                        setTimeout(() => {
+                            addBotMessage('If you want to talk to a real person, please kindly message our company owner at this WhatsApp number:');
+                            const supportDiv = document.createElement('div');
+                            supportDiv.className = 'support-number';
+                            supportDiv.innerHTML = '<i class="fab fa-whatsapp"></i> +263 78 597 6603';
+                            chatMessages.appendChild(supportDiv);
+                            chatMessages.scrollTop = chatMessages.scrollHeight;
+                            setTimeout(() => {
+                                if (!document.querySelector('.options')) addOptions();
+                            }, 1500);
+                        }, 1000);
+                        replied = true;
+                    }
+
+                    if (!replied) {
+                        // Show options after user's first message if not already shown
+                        if (!document.querySelector('.options')) {
+                            setTimeout(() => {
+                                addBotMessage('Thank you for your message. Please select an option below or ask your question.');
+                                addOptions();
+                            }, 1000);
+                        } else {
+                            // Simulate bot response for subsequent messages
+                            setTimeout(() => {
+                                addBotMessage('Thank you for your message. How else can I assist you?');
+                            }, 1000);
+                        }
+                    }
+                }
+            }
+            
+            // Show options after a short delay to simulate typing
+            setTimeout(() => {
+                addOptions();
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
