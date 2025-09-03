@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thanix BGram Sister | Zimbabwe's Lost Document Recovery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
             <div class="logo-container">
                 <div class="logo">
-                    <!-- <i class="fas fa-id-card"></i> -->
-                    <img src="WhatsApp Image 2025-08-31 at 17.29.01_9cb0cb0a.jpg" alt="Thanix BGram Logo" style="width:50px; height:48px; border-radius:50%; object-fit:cover; box-shadow:0 2px 8px rgba(18,140,126,0.15);  background:#fff; display:block;">
-                    <!-- <i class="fas fa-id-card" style="font-size:32px; color:#128c7e; margin-left:-18px; background:#fff; border-radius:50%; padding:6px; box-shadow:0 2px 8px rgba(18,140,126,0.10); position:relative; left:-18px; top:18px;"></i> -->
+                    <img src="WhatsApp Image 2025-08-31 at 17.29.01_9cb0cb0a.jpg" alt="Thanix BGram Logo">
                 </div>
                 <div class="header-text">
                     <h1>Thanix BGram Sister</h1>
@@ -24,11 +22,6 @@
         </header>
         
         <div class="chatbot-container">
-            <!-- <div class="chat-header">
-                <i class="fab fa-whatsapp"></i>
-                <span>Thanix WhatsApp Chatbot</span>
-            </div> -->
-            
             <div class="chat-messages">
                 <div class="message bot-message">
                     <p>Hi! I'm Thanix BGram Sister! 👋</p>
@@ -47,7 +40,7 @@
             <div class="footer-content">
                 <div>
                     <p>&copy; 2025 Thanix BGram Sister. All rights reserved.</p>
-                    <p>Website: <a href="https://www.bgram.co.zw" style="color: #25d366;">www.bgram.co.zw</a></p>
+                    <p>Website: <a href="http://www.bgram.co.zw/FindMyDoc.php" style="color: #25d366;">www.bgram</a></p>
                 </div>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-whatsapp"></i></a>
@@ -110,6 +103,7 @@
                     <div class="option-btn" data-option="upload">📤 Upload a found document</div>
                     <div class="option-btn" data-option="learn">ℹ️ Learn how BGram works</div>
                     <div class="option-btn" data-option="support">💬 Talk to Support</div>
+                    <div class="option-btn" data-option="about">🏢 About BGram Company</div>
                 `;
                 chatMessages.appendChild(optionsDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -123,12 +117,56 @@
                 });
             }
             
+            // Function to show company information
+            function showCompanyInfo() {
+                const companyInfoDiv = document.createElement('div');
+                companyInfoDiv.className = 'company-info';
+                companyInfoDiv.innerHTML = `
+                    <h4>🏢 About BGram Company</h4>
+                    <p><strong>Founded by:</strong> Brendon Butholezwe Zulu (CEO and Founder)</p>
+                    <p><strong>Programmed by:</strong> Antony Sibanda</p>
+                    <p><strong>Chatbot by:</strong> Assistant AI</p>
+                    <p><strong>Launched:</strong> February 2025</p>
+                    <p><strong>Mission:</strong> To reunite Zimbabweans with their lost personal documents quickly, safely, and confidentially through a trusted digital platform that promotes community support and reduces identity fraud.</p>
+                    <p><strong>Slogan:</strong> "Bringing Lost Documents Home."</p>
+                `;
+                chatMessages.appendChild(companyInfoDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            // Function to show how BGram works
+            function showHowItWorks() {
+                const howItWorksDiv = document.createElement('div');
+                howItWorksDiv.className = 'company-info';
+                howItWorksDiv.innerHTML = `
+                    <h4>🔍 How BGram – FindMyDoc Works</h4>
+                    <p><strong>1️⃣ Someone Finds a Document</strong><br>
+                    When someone finds a lost document (like an ID, driver’s license, or passport), they visit the BGram website or Thanix chatbot and upload a photo of the document, the name and ID number, and where and when it was found.</p>
+                    
+                    <p><strong>2️⃣ We Post It Securely</strong><br>
+                    Thanix stores the uploaded document info safely on our website. Sensitive details are protected — we don’t post full IDs publicly.</p>
+                    
+                    <p><strong>3️⃣ You Search for Your Document</strong><br>
+                    If you lose a document, you can search for it on the BGram platform or on Thanix by entering your name or ID number. If a match is found, we’ll let you know.</p>
+                    
+                    <p><strong>4️⃣ Claim & Reconnect</strong><br>
+                    To claim the document, you follow secure steps to verify ownership and connect with the person who found it — with our help, and only when it’s safe. A small fee helps us improve our services for the future.</p>
+                    
+                    <p><strong>5️⃣ Optional Alerts</strong><br>
+                    If your document isn’t found yet, you can sign up for notifications. We’ll alert you immediately if someone uploads a document that matches your details. Notifications are only sent by Thanix on the chatbot.</p>
+                `;
+                chatMessages.appendChild(howItWorksDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
             // Handle option clicks
             function handleOptionClick(option, text) {
                 addUserMessage(text);
                 
                 // Remove options
-                document.querySelector('.options').remove();
+                if (document.querySelector('.options')) {
+                    document.querySelector('.options').remove();
+                }
                 
                 // Simulate bot response based on option selected
                 setTimeout(() => {
@@ -140,7 +178,7 @@
                             addBotMessage('Now, please provide the name on the document:');
                         }, 1500);
                     } else if (option === 'learn') {
-                        addBotMessage('BGram helps reunite lost documents with their owners. When someone finds a document, they upload it to our secure database. Owners can search for their documents and we connect both parties after a small verification payment. No personal information is publicly shared.');
+                        showHowItWorks();
                         setTimeout(() => {
                             addOptions();
                         }, 2000);
@@ -155,6 +193,11 @@
                         setTimeout(() => {
                             addOptions();
                         }, 3000);
+                    } else if (option === 'about') {
+                        showCompanyInfo();
+                        setTimeout(() => {
+                            addOptions();
+                        }, 2000);
                     }
                 }, 1000);
             }
@@ -200,7 +243,7 @@
                         replied = true;
                     } else if (msg.includes('how') && (msg.includes('work') || msg.includes('bgram'))) {
                         setTimeout(() => {
-                            addBotMessage('BGram helps reunite lost documents with their owners. When someone finds a document, they upload it to our secure database. Owners can search for their documents and we connect both parties after a small verification payment. No personal information is publicly shared.');
+                            showHowItWorks();
                             if (!document.querySelector('.options')) addOptions();
                         }, 1200);
                         replied = true;
@@ -215,6 +258,12 @@
                             setTimeout(() => {
                                 if (!document.querySelector('.options')) addOptions();
                             }, 1500);
+                        }, 1000);
+                        replied = true;
+                    } else if (msg.includes('about') || msg.includes('company') || msg.includes('founder') || msg.includes('ceo') || msg.includes('brendon')) {
+                        setTimeout(() => {
+                            showCompanyInfo();
+                            if (!document.querySelector('.options')) addOptions();
                         }, 1000);
                         replied = true;
                     }
